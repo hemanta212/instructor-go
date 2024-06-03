@@ -13,9 +13,9 @@ func (i *InstructorOpenAI) CreateChatCompletion(
 	ctx context.Context,
 	request openai.ChatCompletionRequest,
 	responseType any,
+	modifiers ...func(string) string,
 ) (response openai.ChatCompletionResponse, err error) {
-
-	resp, err := chatHandler(i, ctx, request, responseType)
+	resp, err := chatHandler(i, ctx, request, responseType, modifiers...)
 	if err != nil {
 		return openai.ChatCompletionResponse{}, err
 	}
@@ -26,7 +26,6 @@ func (i *InstructorOpenAI) CreateChatCompletion(
 }
 
 func (i *InstructorOpenAI) chat(ctx context.Context, request interface{}, schema *Schema) (string, interface{}, error) {
-
 	req, ok := request.(openai.ChatCompletionRequest)
 	if !ok {
 		return "", nil, fmt.Errorf("invalid request type for %s client", i.Provider())
@@ -49,7 +48,6 @@ func (i *InstructorOpenAI) chat(ctx context.Context, request interface{}, schema
 }
 
 func (i *InstructorOpenAI) chatToolCall(ctx context.Context, request *openai.ChatCompletionRequest, schema *Schema) (string, *openai.ChatCompletionResponse, error) {
-
 	request.Tools = createOpenAITools(schema)
 
 	resp, err := i.Client.CreateChatCompletion(ctx, *request)
@@ -98,7 +96,6 @@ func (i *InstructorOpenAI) chatToolCall(ctx context.Context, request *openai.Cha
 }
 
 func (i *InstructorOpenAI) chatJSON(ctx context.Context, request *openai.ChatCompletionRequest, schema *Schema) (string, *openai.ChatCompletionResponse, error) {
-
 	request.Messages = prepend(request.Messages, *createJSONMessage(schema))
 
 	// Set JSON mode
@@ -115,7 +112,6 @@ func (i *InstructorOpenAI) chatJSON(ctx context.Context, request *openai.ChatCom
 }
 
 func (i *InstructorOpenAI) chatJSONSchema(ctx context.Context, request *openai.ChatCompletionRequest, schema *Schema) (string, *openai.ChatCompletionResponse, error) {
-
 	request.Messages = prepend(request.Messages, *createJSONMessage(schema))
 
 	resp, err := i.Client.CreateChatCompletion(ctx, *request)

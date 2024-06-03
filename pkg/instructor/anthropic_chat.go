@@ -9,9 +9,13 @@ import (
 	anthropic "github.com/liushuangls/go-anthropic/v2"
 )
 
-func (i *InstructorAnthropic) CreateMessages(ctx context.Context, request anthropic.MessagesRequest, responseType any) (response anthropic.MessagesResponse, err error) {
-
-	resp, err := chatHandler(i, ctx, request, responseType)
+func (i *InstructorAnthropic) CreateMessages(
+	ctx context.Context,
+	request anthropic.MessagesRequest,
+	responseType any,
+	modifiers ...func(string) string,
+) (response anthropic.MessagesResponse, err error) {
+	resp, err := chatHandler(i, ctx, request, responseType, modifiers...)
 	if err != nil {
 		return anthropic.MessagesResponse{}, err
 	}
@@ -22,7 +26,6 @@ func (i *InstructorAnthropic) CreateMessages(ctx context.Context, request anthro
 }
 
 func (i *InstructorAnthropic) chat(ctx context.Context, request interface{}, schema *Schema) (string, interface{}, error) {
-
 	req, ok := request.(anthropic.MessagesRequest)
 	if !ok {
 		return "", nil, fmt.Errorf("invalid request type for %s client", i.Provider())
@@ -43,7 +46,6 @@ func (i *InstructorAnthropic) chat(ctx context.Context, request interface{}, sch
 }
 
 func (i *InstructorAnthropic) completionToolCall(ctx context.Context, request *anthropic.MessagesRequest, schema *Schema) (string, *anthropic.MessagesResponse, error) {
-
 	request.Tools = []anthropic.ToolDefinition{}
 
 	for _, function := range schema.Functions {
@@ -75,11 +77,9 @@ func (i *InstructorAnthropic) completionToolCall(ctx context.Context, request *a
 	}
 
 	return "", nil, errors.New("more than 1 tool response at a time is not implemented")
-
 }
 
 func (i *InstructorAnthropic) completionJSONSchema(ctx context.Context, request *anthropic.MessagesRequest, schema *Schema) (string, *anthropic.MessagesResponse, error) {
-
 	system := fmt.Sprintf(`
 Please responsd with json in the following json_schema:
 
