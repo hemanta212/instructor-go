@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	"github.com/liushuangls/go-anthropic/v2"
 )
 
@@ -41,7 +41,7 @@ func main() {
 		instructor.WithMaxRetries(3),
 	)
 
-	url := "https://raw.githubusercontent.com/instructor-ai/instructor-go/main/examples/images/anthropic/movies.jpg"
+	url := "https://raw.githubusercontent.com/hemanta212/instructor-go/main/examples/images/anthropic/movies.jpg"
 	data, err := urlToBase64(url)
 	if err != nil {
 		panic(err)

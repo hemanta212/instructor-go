@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	openai "github.com/sashabaranov/go-openai"
 )
 
@@ -36,7 +36,7 @@ func main() {
 		instructor.WithMaxRetries(3),
 	)
 
-	url := "https://raw.githubusercontent.com/instructor-ai/instructor-go/main/examples/images/openai/books.png"
+	url := "https://raw.githubusercontent.com/hemanta212/instructor-go/main/examples/images/openai/books.png"
 
 	var bookCatalog BookCatalog
 	_, err := client.CreateChatCompletion(ctx, openai.ChatCompletionRequest{

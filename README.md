@@ -7,7 +7,7 @@ Instructor is a library that makes it a breeze to work with structured outputs f
 [![Twitter Follow](https://img.shields.io/twitter/follow/jxnlco?style=social)](https://twitter.com/jxnlco)
 [![LinkedIn Follow](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/robby-horvath/)
 [![Documentation](https://img.shields.io/badge/docs-available-brightgreen)](https://go.useinstructor.com)
-[![GitHub issues](https://img.shields.io/github/issues/instructor-ai/instructor-go.svg)](https://github.com/instructor-ai/instructor-go/issues)
+[![GitHub issues](https://img.shields.io/github/issues/hemanta212/instructor-go.svg)](https://github.com/hemanta212/instructor-go/issues)
 [![Discord](https://img.shields.io/discord/1192334452110659664?label=discord)](https://discord.gg/UD9GPjbs8c)
 
 Built on top of [`invopop/jsonschema`](https://github.com/invopop/jsonschema) and utilizing `jsonschema` Go struct tags (so no changing code logic), it provides a simple, transparent, and user-friendly API to manage validation, retries, and streaming responses. Get ready to supercharge your LLM workflows!
@@ -36,7 +36,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	openai "github.com/sashabaranov/go-openai"
 )
 
@@ -107,7 +107,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	openai "github.com/sashabaranov/go-openai"
 )
 
@@ -197,7 +197,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	anthropic "github.com/liushuangls/go-anthropic/v2"
 )
 
@@ -282,7 +282,7 @@ func assert(condition bool, message string) {
 <details>
 <summary>Images with OpenAI</summary>
 
-![List of movies](https://raw.githubusercontent.com/instructor-ai/instructor-go/main/examples/images/openai/books.png)
+![List of movies](https://raw.githubusercontent.com/hemanta212/instructor-go/main/examples/images/openai/books.png)
 
 <details>
 <summary>Running</summary>
@@ -302,7 +302,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	openai "github.com/sashabaranov/go-openai"
 )
 
@@ -333,7 +333,7 @@ func main() {
 		instructor.WithMaxRetries(3),
 	)
 
-	url := "https://raw.githubusercontent.com/instructor-ai/instructor-go/main/examples/images/openai/books.png"
+	url := "https://raw.githubusercontent.com/hemanta212/instructor-go/main/examples/images/openai/books.png"
 
 	var bookCatalog BookCatalog
 	_, err := client.CreateChatCompletion(ctx, openai.ChatCompletionRequest{
@@ -421,7 +421,7 @@ func main() {
 <details>
 <summary>Images with Anthropic</summary>
 
-![List of books](https://raw.githubusercontent.com/instructor-ai/instructor-go/main/examples/images/anthropic/movies.png)
+![List of books](https://raw.githubusercontent.com/hemanta212/instructor-go/main/examples/images/anthropic/movies.png)
 
 <details>
 <summary>Running</summary>
@@ -444,7 +444,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	"github.com/liushuangls/go-anthropic/v2"
 )
 
@@ -477,7 +477,7 @@ func main() {
 		instructor.WithMaxRetries(3),
 	)
 
-	url := "https://raw.githubusercontent.com/instructor-ai/instructor-go/main/examples/images/anthropic/movies.jpg"
+	url := "https://raw.githubusercontent.com/hemanta212/instructor-go/main/examples/images/anthropic/movies.jpg"
 	data, err := urlToBase64(url)
 	if err != nil {
 		panic(err)
@@ -610,7 +610,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 	openai "github.com/sashabaranov/go-openai"
 )
 
@@ -760,7 +760,7 @@ import (
 
 	cohere "github.com/cohere-ai/cohere-go/v2"
 	cohereclient "github.com/cohere-ai/cohere-go/v2/client"
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 )
 
 type Section struct {
@@ -919,7 +919,7 @@ import (
 
 	cohere "github.com/cohere-ai/cohere-go/v2"
 	cohereclient "github.com/cohere-ai/cohere-go/v2/client"
-	"github.com/instructor-ai/instructor-go/pkg/instructor"
+	"github.com/hemanta212/instructor-go/pkg/instructor"
 )
 
 type HistoricalFact struct {
