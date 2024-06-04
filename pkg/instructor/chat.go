@@ -7,7 +7,7 @@ import (
 	"reflect"
 )
 
-func chatHandler(i Instructor, ctx context.Context, request interface{}, response any, modifiers ...func(string) string) (interface{}, error) {
+func chatHandler(i Instructor, ctx context.Context, request interface{}, response any, modifiers ...func(string) (string, error)) (interface{}, error) {
 	var err error
 
 	t := reflect.TypeOf(response)
@@ -26,7 +26,10 @@ func chatHandler(i Instructor, ctx context.Context, request interface{}, respons
 		}
 
 		for _, m := range modifiers {
-			text = m(text)
+			text, err = m(text)
+			if err != nil {
+				return nil, err
+			}
 		}
 
 		text = extractJSON(&text)

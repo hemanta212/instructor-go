@@ -13,7 +13,7 @@ func (i *InstructorOpenAI) CreateChatCompletion(
 	ctx context.Context,
 	request openai.ChatCompletionRequest,
 	responseType any,
-	modifiers ...func(string) string,
+	modifiers ...func(string) (string, error),
 ) (response openai.ChatCompletionResponse, err error) {
 	resp, err := chatHandler(i, ctx, request, responseType, modifiers...)
 	if err != nil {
