@@ -13,7 +13,7 @@ func (i *InstructorAnthropic) CreateMessages(
 	ctx context.Context,
 	request anthropic.MessagesRequest,
 	responseType any,
-	modifiers ...func(string) string,
+	modifiers ...func(string) (string, error),
 ) (response anthropic.MessagesResponse, err error) {
 	resp, err := chatHandler(i, ctx, request, responseType, modifiers...)
 	if err != nil {
