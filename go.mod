@@ -1,4 +1,4 @@
-module github.com/instructor-ai/instructor-go
+module github.com/hemanta212/instructor-go
 
 go 1.21.8
 
